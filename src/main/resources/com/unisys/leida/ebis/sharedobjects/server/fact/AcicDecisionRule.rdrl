@@ -7,7 +7,7 @@ rule "AcicDecisionRule"
 	ruleflow-group "acicDecision"
 	salience 10
 	when
-		ad : ACICDecision( nationality == "ARGE" || nationality == "ARME" || nationality == "AUST" || nationality == "BELM" || nationality == "BRAZ" , gender == "M" || gender == "F" , age >= 18 )
+		ad : ACICDecision( gender == "M" || gender == "F" , age >= 18 , ( nationality == "AUST" && acquisitionLocation in ( "SYDNEY", "BRISBANE", "MELBOURNE" ) )|| ( nationality == "BRAZ" && acquisitionLocation in ( "RIO DE JANEIRO", "MANAUS", "BELFORD ROXO" ) )|| ( nationality == "ARGE" && acquisitionLocation in ( "LA PLATA", "SALTA", "SAN JUAN" ) )|| ( nationality == "ARME" && acquisitionLocation in ( "YEREVAN", "GYUMRI", "ARMAVIR" ) )|| ( nationality == "BELM" && acquisitionLocation in ( "SAINT CLAIRSVILLE", "BARNESVILLE", "MARTINS FERRY" ) ))
 	then
 		ad.setResult( "1" );
 end
